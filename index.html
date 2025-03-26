@@ -15,7 +15,7 @@
         }
 
         #love-button {
-            font-size: 40px;
+            font-size: 80px; /* Love besar */
             border: none;
             background: none;
             cursor: pointer;
@@ -24,8 +24,22 @@
 
         #love-image {
             display: none;
-            width: 200px;
+            width: 400px; /* Foto besar */
             margin-top: 20px;
+        }
+
+        /* Animasi Jedag Jedug */
+        @keyframes jedagJedug {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1); /* Sedikit membesar */
+            }
+        }
+        
+        .animate {
+            animation: jedagJedug 0.5s infinite alternate; /* Efek jedag jedug */
         }
     </style>
 </head>
@@ -40,6 +54,7 @@
 
         loveButton.addEventListener("click", function () {
             loveImage.style.display = "block"; // Tampilkan gambar
+            loveImage.classList.add("animate"); // Tambahkan efek jedag jedug
             loveButton.style.opacity = "0"; // Hilangkan tombol perlahan
             setTimeout(() => {
                 loveButton.style.display = "none"; // Sembunyikan tombol
