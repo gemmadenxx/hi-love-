@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Tombol Love</title>
+    <style>
+        body {
+            background-color: #ADD8E6; /* Warna biru muda */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #love-button {
+            font-size: 40px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.5s ease; /* Animasi smooth */
+        }
+
+        #love-image {
+            display: none;
+            width: 200px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="love-button">❤️</button> <!-- Love awal warna merah -->
+    <img id="love-image" src="https://raw.githubusercontent.com/gemmadenxx/my-love-/166e3c005020119b327a1feff7ebe50b2e44fffb/560dd94a3d5118d071a5f2c45c35abd5.jpg" alt="Love Image">
+
+    <script>
+        let clickCount = 0;
+        let maxClicks = 6; // Setelah 6 kali baru gambar muncul
+        let loveButton = document.getElementById("love-button");
+        let loveImage = document.getElementById("love-image");
+
+        loveButton.addEventListener("click", function () {
+            clickCount++;
+
+            // Membesarkan tombol hingga 6x lipat
+            let scale = 1 + (clickCount * (6 - 1) / maxClicks); 
+            loveButton.style.transform = `scale(${scale})`;
+
+            if (clickCount === maxClicks) {
+                loveImage.style.display = "block"; // Tampilkan gambar setelah 6 klik
+                loveButton.style.opacity = "0"; // Hilangkan tombol secara perlahan
+                setTimeout(() => {
+                    loveButton.style.display = "none"; // Sembunyikan tombol
+                }, 500);
+            }
+        });
+    </script>
+
+</body>
+</html>
